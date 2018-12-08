@@ -9,7 +9,7 @@ describe(`Running Day ${day} Tests`, function() {
   describe('Part 1', function() {
     _.each(inputPart1, ({input, expected}, index) => {
       it(`should pass with sample input ${index}`, function() {
-        const answer = part1(input);
+        const answer = part1(input, true);
         assert.equal(answer, expected);
       });
     });
@@ -17,7 +17,7 @@ describe(`Running Day ${day} Tests`, function() {
   describe('Part 2', function() {
     _.each(inputPart2, ({input, expected}, index) => {
       it(`should pass with sample input ${index}`, function() {
-        const answer = part2(input);
+        const answer = part2(input, true);
         assert.equal(answer, expected);
       });
     });

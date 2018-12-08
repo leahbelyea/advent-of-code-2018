@@ -75,8 +75,8 @@ function findLargestArea(grid, locations) {
   return largestAreaSize;
 }
 
-function isWithinSafeRegion(locations, coordinate) {
-  const safeDistance = _.size(_.keys(locations)) === 6 ? 32 : 10000;
+function isWithinSafeRegion(locations, coordinate, isTest) {
+  const safeDistance = isTest ? 32 : 10000;
   let manhattanSum = 0;
   _.each(locations, location => {
     manhattanSum += Math.abs(location[0] - coordinate[0]) + Math.abs(location[1] - coordinate[1]);
@@ -84,10 +84,10 @@ function isWithinSafeRegion(locations, coordinate) {
   return manhattanSum < safeDistance;
 }
 
-function markSafeRegion(grid, locations) {
+function markSafeRegion(grid, locations, isTest) {
   _.each(grid, (row, x) => {
     _.each(row, (column, y) => {
-      if (isWithinSafeRegion(locations, [x, y])) {
+      if (isWithinSafeRegion(locations, [x, y], isTest)) {
         grid[y][x] = '#';
       }
     });
@@ -105,11 +105,11 @@ exports.part1 = function(rawInput) {
   return largestArea;
 };
 
-exports.part2 = function(rawInput) {
+exports.part2 = function(rawInput, isTest) {
   const input = formatInput(rawInput);
   const gridSize = 500;
   let grid = Array(gridSize).fill().map(() => Array(gridSize).fill(''));
   grid = addLocationsToGrid(grid, input);
-  grid = markSafeRegion(grid, input);
+  grid = markSafeRegion(grid, input, isTest);
   return _.size(_.filter(_.flatten(grid), c => c === '#'));
 };
