@@ -53,15 +53,20 @@ exports.part1 = function(rawInput, isTest) {
   const input = formatInput(rawInput);
   let seconds = 0;
   const maxSeconds = isTest ? 10 : 100000;
+  let minSize;
+  let minSeconds;
 
   while (seconds < maxSeconds) {
     const sky = moveStars(input, seconds);
-    if (sky) {
-      printSky(sky);
+    const skySize = _.size(sky);
+    if (sky && (!minSize || skySize < minSize)) {
+      minSize = skySize;
+      minSeconds = seconds
     }
     seconds++;
   }
 
+  printSky(moveStars(input, minSeconds));
   return 'See output for answer';
 };
 
@@ -69,15 +74,18 @@ exports.part2 = function(rawInput, isTest) {
   const input = formatInput(rawInput);
   let seconds = 0;
   const maxSeconds = isTest ? 10 : 100000;
+  let minSize;
+  let minSeconds;
 
   while (seconds < maxSeconds) {
     const sky = moveStars(input, seconds);
-    if (sky) {
-      console.log(seconds);
-      printSky(sky);
-      console.log('\n\n');
+    const skySize = _.size(sky);
+    if (sky && (!minSize || skySize < minSize)) {
+      minSize = skySize;
+      minSeconds = seconds
     }
     seconds++;
   }
-  return 'See output for answer';
+
+  return minSeconds;
 };
