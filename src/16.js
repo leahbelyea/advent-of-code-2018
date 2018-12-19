@@ -24,82 +24,82 @@ function formatInput(rawInput) {
   return {part1, part2};
 }
 
-addr = function (registers, a, b, c) {
+const addr = function (registers, a, b, c) {
   registers[c] = registers[a] + registers[b];
   return registers;
 }
 
-addi = function (registers, a, b, c) {
+const addi = function (registers, a, b, c) {
   registers[c] = registers[a] + b;
   return registers;
 }
 
-mulr = function (registers, a, b, c) {
+const mulr = function (registers, a, b, c) {
   registers[c] = registers[a] * registers[b];
   return registers;
 }
 
-muli = function (registers, a, b, c) {
+const muli = function (registers, a, b, c) {
   registers[c] = registers[a] * b;
   return registers;
 }
 
-banr = function (registers, a, b, c) {
+const banr = function (registers, a, b, c) {
   registers[c] = registers[a] & registers[b];
   return registers;
 }
 
-bani = function (registers, a, b, c) {
+const bani = function (registers, a, b, c) {
   registers[c] = registers[a] & b;
   return registers;
 }
 
-borr = function (registers, a, b, c) {
+const borr = function (registers, a, b, c) {
   registers[c] = registers[a] | registers[b];
   return registers;
 }
 
-bori = function (registers, a, b, c) {
+const bori = function (registers, a, b, c) {
   registers[c] = registers[a] | b;
   return registers;
 }
 
-setr = function (registers, a, b, c) {
+const setr = function (registers, a, b, c) {
   registers[c] = registers[a];
   return registers;
 }
 
-seti = function (registers, a, b, c) {
+const seti = function (registers, a, b, c) {
   registers[c] = a;
   return registers;
 }
 
-gtir = function (registers, a, b, c) {
+const gtir = function (registers, a, b, c) {
   registers[c] = a > registers[b] ? 1 : 0;
   return registers;
 }
 
-gtri = function (registers, a, b, c) {
+const gtri = function (registers, a, b, c) {
   registers[c] = registers[a] > b ? 1 : 0;
   return registers;
 }
 
-gtrr = function (registers, a, b, c) {
+const gtrr = function (registers, a, b, c) {
   registers[c] = registers[a] > registers[b] ? 1 : 0;
   return registers;
 }
 
-eqir = function (registers, a, b, c) {
+const eqir = function (registers, a, b, c) {
   registers[c] = a === registers[b] ? 1 : 0;
   return registers;
 }
 
-eqri = function (registers, a, b, c) {
+const eqri = function (registers, a, b, c) {
   registers[c] = registers[a] === b ? 1 : 0;
   return registers;
 }
 
-eqrr = function (registers, a, b, c) {
+const eqrr = function (registers, a, b, c) {
   registers[c] = registers[a] === registers[b] ? 1 : 0;
   return registers;
 }
